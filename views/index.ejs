@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/main.css">
+  <title>TV Mazes</title>
+ 
+
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>TV Mazes ✌️</h1>
+
+    <form action="/" id="form" class="form" method="POST">
+     <input type="text" name="search" id="search">
+      
+      <button type="submit" class="form-submit">Search</button>
+    </form>
+     <% if(locals.data){ %>
+        <section id="cards" class="cards">
+          <article class="card-item">
+            
+            <h2 class="card-activity">
+              <!-- Show Activity -->
+            TV-SHOW NAME : <%= data %>
+          </h2>
+          <h4>
+            Language : <%= data2%>
+          </h4>
+          <h4>
+            Rating : <%= data6%>
+          </h4>
+          <h4>
+            Genres : <%= data3%> 
+          </h4>
+          <img  class="main-image"  src="<%= data4%>" alt="No images Available">
+          <div id = "summary">
+           <h3><%= data5 %></h3> 
+          </div>
+          <br><br>
+          <h1>CAST</h1><br>
+          
+          <div class="image-container">
+            <% castData.forEach((cast, index) =>{ %>
+            <div>
+              <img class="image" src="<%= cast.image %>" alt="Image not found">
+              <div class="image-name"><b><em><%= cast.name %></em></b></div>
+            </div>
+            <% }) %>
+          </div>
+          <!-- ... Your Previous HTML Code ... -->
+<h1>Episodes</h1>
+
+<div class="episode-container">
+    <% episodeData.forEach((episode, index) => { %>
+        <div id="episode">
+            <h2>S<%= episode.season %> E<%= episode.number %></h2>
+            <h4>Rating: <%= episode.rating %></h4>
+            <h3><%= episode.name %></h3>
+            <img class="episode-image" src="<%= episode.mediumImage %>" alt="Episode Image">
+            <p><%= episode.summary %></p>
+        </div>
+    <% }) %>
+</div>
+
+                     
+          </article>
+           
+          <div id="tag-error" class="tag-error">
+            <!-- Show any errors that were sent from the backend -->
+            <!-- <p>No activities that Match your Criteria</p> -->
+          </div>
+     <% }else{%>
+   
+       <h1>Sorry!! Item not Found</h1>
+   
+   
+   <% } %> 
+    
+    </section>
+  </div>
+
+</body>
+
+</html>
